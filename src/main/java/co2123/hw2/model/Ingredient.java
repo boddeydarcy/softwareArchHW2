@@ -1,6 +1,11 @@
 package co2123.hw2.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Ingredient {
+    @Id
     private int identifier;
     private int amount;
 
@@ -22,6 +27,9 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return "identifier=" + identifier + ", amount=" + amount;
+        return "Ingredient{" +
+                "identifier='"+ identifier + '\'' +
+                ", amount='"+ amount + '\'' +
+                '}';
     }
 }

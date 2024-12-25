@@ -1,11 +1,20 @@
 package co2123.hw2.model;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
 public class Bread {
+    @Id
     private String name;
+    @ManyToMany(mappedBy = "bakeries")
     private List<Bakery> bakeries;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn
     private List<Ingredient> ingredients;
+    @OneToOne
     private Ingredient filling;
 
     public void setName(String name){
@@ -42,6 +51,10 @@ public class Bread {
 
     @Override
     public String toString(){
-        return "name='"+ name + "', "
+        return "Bread{" +
+                "name='"+ name + '\'' +
+                ", ingredients='"+ ingredients + '\'' +
+                ", filling='"+ filling + '\'' +
+                '}';
     }
 }

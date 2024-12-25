@@ -1,11 +1,18 @@
 package co2123.hw2.model;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
 public class Bakery {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String address;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Bread> breads;
+    @ManyToOne
     private Bread newest;
 
     public void setID(int id){
@@ -38,5 +45,15 @@ public class Bakery {
 
     public Bread getNewest(){
         return newest;
+    }
+
+    @Override
+    public String toString() {
+        return "Bakery{" +
+                "id='"+ id + '\'' +
+                ", address='"+ address + '\'' +
+                ", breads='"+ breads + '\'' +
+                ", newest='"+ newest + '\'' +
+                '}';
     }
 }
