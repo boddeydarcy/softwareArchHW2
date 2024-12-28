@@ -18,7 +18,7 @@ import java.util.Collections;
 public class Hw2Application implements CommandLineRunner {
 
     @Autowired
-    private BakeryRepository BakeryRepository;
+    private BakeryRepository bakeryRepository;
 
     @Autowired
     private BreadRepository breadRepository;
@@ -31,7 +31,7 @@ public class Hw2Application implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         Ingredient ingredient = new Ingredient();
         ingredient.setAmount(2);
         ingredientRepository.save(ingredient);
@@ -45,7 +45,6 @@ public class Hw2Application implements CommandLineRunner {
         Bakery bakery = new Bakery();
         bakery.setAddress("21 Baker St");
         bakery.setBreads(Collections.singletonList(bread));
-        bakery.setNewest(bread);
-        BakeryRepository.save(bakery);
+        bakeryRepository.save(bakery);
     }
 }
