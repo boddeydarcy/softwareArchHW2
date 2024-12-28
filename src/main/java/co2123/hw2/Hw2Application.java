@@ -32,18 +32,18 @@ public class Hw2Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Ingredient ingredient = new Ingredient();
-        ingredient.setAmount(2);
-        ingredientRepository.save(ingredient);
+        Bakery bakery = new Bakery();
+        bakery.setAddress("21 Baker St");
 
         Bread bread = new Bread();
         bread.setName("White Sourdough");
-        bread.setIngredients(Collections.singletonList(ingredient));
-        bread.setFilling(ingredient);
-        breadRepository.save(bread);
 
-        Bakery bakery = new Bakery();
-        bakery.setAddress("21 Baker St");
+        Ingredient ingredient = new Ingredient();
+        ingredient.setAmount(2);
+
+        ingredient.setBread(bread);
+        bread.setIngredients(Collections.singletonList(ingredient));
+        bread.setBakeries(Collections.singletonList(bakery));
         bakery.setBreads(Collections.singletonList(bread));
         bakeryRepository.save(bakery);
     }

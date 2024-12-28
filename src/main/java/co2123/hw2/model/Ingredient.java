@@ -10,7 +10,7 @@ public class Ingredient {
     private int amount;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "bread_name")
     private Bread bread;
 
     public void setIdentifier(int identifier) {

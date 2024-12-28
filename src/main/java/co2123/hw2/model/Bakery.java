@@ -9,9 +9,10 @@ public class Bakery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String address;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "bakeries", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Bread> breads;
 
     @ManyToOne

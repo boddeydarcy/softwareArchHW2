@@ -12,7 +12,7 @@ public class Bread {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Bakery> bakeries;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="bread", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients;
 
     @OneToOne
