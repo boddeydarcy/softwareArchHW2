@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.security.cert.CertPathValidatorException;
 import java.util.Collections;
+import java.util.List;
 
 @SpringBootApplication
 public class Hw2Application implements CommandLineRunner {

@@ -12,7 +12,7 @@ public class Bread {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Bakery> bakeries;
 
-    @OneToMany(mappedBy="bread", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="bread",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients;
 
     @OneToOne
@@ -26,8 +26,11 @@ public class Bread {
         this.bakeries = bakeries;
     }
 
-    public void setIngredients(List<Ingredient> ingredients){
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
+        for (Ingredient ingredient : ingredients) {
+            ingredient.setBread(this);
+        }
     }
 
     public void setFilling(Ingredient filling){
