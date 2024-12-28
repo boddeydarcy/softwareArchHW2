@@ -8,7 +8,12 @@ import java.util.List;
 public class Bread {
     @Id
     private String name;
-    @ManyToMany(mappedBy = "bakeries")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "bakery_bread",
+            joinColumns = @JoinColumn(name = "bread_name"),
+            inverseJoinColumns = @JoinColumn(name = "bakery_id")
+    )
     private List<Bakery> bakeries;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
