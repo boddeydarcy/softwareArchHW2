@@ -11,9 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.security.cert.CertPathValidatorException;
 import java.util.Collections;
-import java.util.List;
 
 @SpringBootApplication
 public class Hw2Application implements CommandLineRunner {
@@ -43,9 +41,11 @@ public class Hw2Application implements CommandLineRunner {
         ingredient.setAmount(2);
 
         ingredient.setBread(bread);
+        bread.setFilling(ingredient);
         bread.setIngredients(Collections.singletonList(ingredient));
         bread.setBakeries(Collections.singletonList(bakery));
         bakery.setBreads(Collections.singletonList(bread));
+        bakery.setNewest(bread);
         bakeryRepository.save(bakery);
     }
 }
