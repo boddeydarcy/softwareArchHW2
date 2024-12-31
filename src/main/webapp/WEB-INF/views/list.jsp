@@ -8,7 +8,6 @@
 <body>
 <h1>${dataName} List</h1>
 <ul>
-    <%--@elvariable id="data" type="java.util.List"--%>
     <c:forEach var="item" items="${data}">
         <li>${item}</li>
     </c:forEach>

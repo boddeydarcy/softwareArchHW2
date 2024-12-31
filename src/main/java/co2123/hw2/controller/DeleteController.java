@@ -1,12 +1,13 @@
 package co2123.hw2.controller;
 
-import ch.qos.logback.core.model.Model;
 import co2123.hw2.model.Bakery;
 import co2123.hw2.model.Bread;
 import co2123.hw2.model.Ingredient;
 import co2123.hw2.repo.BakeryRepository;
 import co2123.hw2.repo.BreadRepository;
 import co2123.hw2.repo.IngredientRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Controller
 public class DeleteController {
+    private static final Logger log = LoggerFactory.getLogger(DeleteController.class);
     @Autowired
     private BakeryRepository bakeryRepository;
 
@@ -44,16 +46,16 @@ public class DeleteController {
 
     @GetMapping("/deleteIngredient")
     public String deleteIngredient(@RequestParam int identifier) {
-        List<Ingredient> ingredients = ingredientRepository.findByIdentifier(identifier);
-        if(breadRepository.findByIngredients(ingredients).isPresent()){
-            for (Bread bread : breadRepository.findAll()){
-                bread.getIngredients().remove(ingredients.get(0));
+        List<Ingredient> ingredient = ingredientRepository.findByIdentifier(identifier);
+        Ingredient filling = ingredient.get(0);
+
+        for (Bread bread : breadRepository.findAll()) {
+            if (bread.getFilling() == filling) {
                 bread.setFilling(null);
             }
         }
         ingredientRepository.deleteById(identifier);
         return "redirect:/";
     }
-
 }
 

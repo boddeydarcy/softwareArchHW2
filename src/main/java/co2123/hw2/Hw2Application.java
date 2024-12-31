@@ -11,7 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Collections;
+import java.util.List;
 
 @SpringBootApplication
 public class Hw2Application implements CommandLineRunner {
@@ -40,11 +40,15 @@ public class Hw2Application implements CommandLineRunner {
         Ingredient ingredient = new Ingredient();
         ingredient.setAmount(2);
 
+        List<Ingredient> ingredients = List.of(ingredient);
+        List<Bakery> bakeries = List.of(bakery);
+        List<Bread> breads = List.of(bread);
+
         ingredient.setBread(bread);
+        bread.setIngredients(ingredients);
         bread.setFilling(ingredient);
-        bread.setIngredients(Collections.singletonList(ingredient));
-        bread.setBakeries(Collections.singletonList(bakery));
-        bakery.setBreads(Collections.singletonList(bread));
+        bread.setBakeries(bakeries);
+        bakery.setBreads(breads);
         bakery.setNewest(bread);
         bakeryRepository.save(bakery);
     }

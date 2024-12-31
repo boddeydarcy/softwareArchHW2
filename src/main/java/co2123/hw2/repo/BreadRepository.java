@@ -12,5 +12,4 @@ public interface BreadRepository extends CrudRepository<Bread, String> {
 
     Optional<Object> findByIngredients(List<Ingredient> ingredients);
 
-    boolean findByFilling(Ingredient filling);
 }
