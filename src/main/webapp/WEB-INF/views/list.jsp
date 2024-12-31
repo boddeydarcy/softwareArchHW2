@@ -6,12 +6,13 @@
     <title>List</title>
 </head>
 <body>
-<h1>Data List</h1>
+<h1>${dataName} List</h1>
 <ul>
     <%--@elvariable id="data" type="java.util.List"--%>
     <c:forEach var="item" items="${data}">
         <li>${item}</li>
     </c:forEach>
 </ul>
+<p><a href="/">Lists</a></p>
 </body>
 </html>

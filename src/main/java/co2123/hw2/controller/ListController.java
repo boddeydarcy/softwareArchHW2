@@ -23,18 +23,21 @@ public class ListController {
     @GetMapping(value= "/listBakery")
     public String listBakery(Model model) {
         model.addAttribute("data", bakeryRepository.findAll());
+        model.addAttribute("dataName", "Bakery");
         return "list";
     }
 
     @GetMapping(value= "/listBread")
     public String listBread(Model model) {
         model.addAttribute("data", breadRepository.findAll());
+        model.addAttribute("dataName", "Bread");
         return "list";
     }
 
     @GetMapping(value= "/listIngredient")
     public String listIngredient(Model model) {
         model.addAttribute("data", ingredientRepository.findAll());
+        model.addAttribute("dataName", "Ingredient");
         return "list";
     }
 

@@ -12,7 +12,7 @@ public class Bakery {
 
     private String address;
 
-    @ManyToMany(mappedBy = "bakeries", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "bakeries", cascade = CascadeType.ALL)
     private List<Bread> breads;
 
     @ManyToOne
@@ -52,8 +52,7 @@ public class Bakery {
 
     @Override
     public String toString() {
-        return "Bakery{" +
-                "id='"+ id + '\'' +
+        return "Bakery{id="+ id +
                 ", address='"+ address + '\'' +
                 ", breads='"+ breads + '\'' +
                 ", newest='"+ newest + '\'' +

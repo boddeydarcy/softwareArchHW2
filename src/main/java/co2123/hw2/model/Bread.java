@@ -9,13 +9,13 @@ public class Bread {
     @Id
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany
     private List<Bakery> bakeries;
 
     @OneToMany(mappedBy="bread",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Ingredient filling;
 
     public void setName(String name){
