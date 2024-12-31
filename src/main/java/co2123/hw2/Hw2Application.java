@@ -31,6 +31,7 @@ public class Hw2Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        // initializing test data for a bakery, bread and an ingredient
         Bakery bakery = new Bakery();
         bakery.setAddress("21 Baker St");
 

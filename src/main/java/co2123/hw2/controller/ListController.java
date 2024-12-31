@@ -22,9 +22,10 @@ public class ListController {
 
     @GetMapping(value= "/listBakery")
     public String listBakery(Model model) {
+        // will add all of the repo data and the name to the model
         model.addAttribute("data", bakeryRepository.findAll());
         model.addAttribute("dataName", "Bakery");
-        return "list";
+        return "list"; // will show the list jsp
     }
 
     @GetMapping(value= "/listBread")
@@ -40,5 +41,4 @@ public class ListController {
         model.addAttribute("dataName", "Ingredient");
         return "list";
     }
-
 }

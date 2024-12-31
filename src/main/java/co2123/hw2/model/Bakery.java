@@ -6,18 +6,21 @@ import java.util.List;
 
 @Entity
 public class Bakery {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // primary key of id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // automatic id generation
     private int id;
 
     private String address;
 
+    // many bakeries can have many breads
     @ManyToMany(mappedBy = "bakeries", cascade = CascadeType.ALL)
     private List<Bread> breads;
 
+    // many bakeries will have one newest bread
     @ManyToOne
     private Bread newest;
 
+    //getters and setters
     public void setID(int id){
         this.id = id;
     }
@@ -50,6 +53,7 @@ public class Bakery {
         return newest;
     }
 
+    // this will be the data displayed by the jsp
     @Override
     public String toString() {
         return "Bakery{id="+ id +

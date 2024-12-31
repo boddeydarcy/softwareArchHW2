@@ -6,18 +6,21 @@ import java.util.List;
 
 @Entity
 public class Bread {
-    @Id
+    @Id // declaration of the primary key 'name'
     private String name;
 
-    @ManyToMany
+    @ManyToMany // many breads can be made by many bakeries
     private List<Bakery> bakeries;
 
+    // one bread can have many ingredients this will join the two tables together
     @OneToMany(mappedBy="bread",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients;
 
+    // one bread can have one filling
     @OneToOne(cascade = CascadeType.ALL)
     private Ingredient filling;
 
+    // getters and setters
     public void setName(String name){
         this.name = name;
     }
@@ -28,9 +31,6 @@ public class Bread {
 
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
-        for (Ingredient ingredient : ingredients) {
-            ingredient.setBread(this);
-        }
     }
 
     public void setFilling(Ingredient filling){
@@ -53,6 +53,7 @@ public class Bread {
         return filling;
     }
 
+    // this will be the data displayed by the jsp
     @Override
     public String toString(){
         return "Bread{" +
